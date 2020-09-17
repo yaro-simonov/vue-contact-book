@@ -10,11 +10,11 @@ export default new Vuex.Store({
   mutations: {
     addContact(state, contact) {
       state.contacts.push(contact)
-      localStorage.setItem('contacts', JSON.stringify(state.contacts))
+      window.localStorage.setItem('contacts', JSON.stringify(state.contacts))
     },
     deleteContact(state, idx) {
       state.contacts.splice(idx, 1)
-      localStorage.setItem('contacts', JSON.stringify(state.contacts))
+      window.localStorage.setItem('contacts', JSON.stringify(state.contacts))
     },
     deleteOpen(state, idx) {
       const contact = state.contacts[idx]
@@ -29,7 +29,7 @@ export default new Vuex.Store({
     },
     addItem(state, {item, id}) {
       state.contacts.find(contact => contact.id === id).items.push(item)
-      localStorage.setItem('contacts', JSON.stringify(state.contacts))
+      window.localStorage.setItem('contacts', JSON.stringify(state.contacts))
     },
     updateItem(state, {id, idx, newTitle, newValue}) {
       const item = state.contacts.find(contact => contact.id === id).items[idx]
@@ -38,11 +38,11 @@ export default new Vuex.Store({
       item.title = newTitle
       item.value = newValue
       item.newTitle = item.newValue = ''
-      localStorage.setItem('contacts', JSON.stringify(state.contacts))
+      window.localStorage.setItem('contacts', JSON.stringify(state.contacts))
     },
     deleteItem(state, {id, idx}) {
       state.contacts.find(contact => contact.id === id).items.splice(idx, 1)
-      localStorage.setItem('contacts', JSON.stringify(state.contacts))
+      window.localStorage.setItem('contacts', JSON.stringify(state.contacts))
     },
     resetOpen(state, {id, idx}) {
       const item = state.contacts.find(contact => contact.id === id).items[idx]
@@ -54,7 +54,7 @@ export default new Vuex.Store({
       item.value = item.oldValue
       item.oldTitle = item.oldValue = ''
       item.resetOpen = false
-      localStorage.setItem('contacts', JSON.stringify(state.contacts))
+      window.localStorage.setItem('contacts', JSON.stringify(state.contacts))
     }
   },
   actions: {
