@@ -32,5 +32,7 @@ h2 {
   margin-bottom: 30px;
   padding-bottom: 20px;
   border-bottom: 1px solid #46bd87;
+  overflow-wrap: break-word;
+  word-break: break-all;
 }
 </style>

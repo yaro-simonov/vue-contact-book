@@ -57,6 +57,16 @@ export default {
   border-left: 5px solid #46bd87;
   margin-bottom: 15px;
   transition-duration: .3s;
+  &__heading {
+    overflow-wrap: break-word;
+    word-break: break-all;
+  }
+  &__items {
+    p {
+      overflow-wrap: break-word;
+      word-break: break-all;
+    }
+  }
   &:last-child {
     margin-bottom: 0;
   }

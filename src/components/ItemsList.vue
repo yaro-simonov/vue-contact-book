@@ -92,6 +92,10 @@ export default {
     align-items: center;
     padding: 5px;
     border-bottom: 1px solid #e0e0e0;
+    p {
+      overflow-wrap: break-word;
+      word-break: break-all;
+    }
     &:last-child {
       border-bottom: none;
     }

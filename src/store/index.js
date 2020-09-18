@@ -5,16 +5,14 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    contacts: JSON.parse(window.localStorage.getItem('contacts'))
+    contacts: []
   },
   mutations: {
     addContact(state, contact) {
       state.contacts.push(contact)
-      window.localStorage.setItem('contacts', JSON.stringify(state.contacts))
     },
     deleteContact(state, idx) {
       state.contacts.splice(idx, 1)
-      window.localStorage.setItem('contacts', JSON.stringify(state.contacts))
     },
     deleteOpen(state, idx) {
       const contact = state.contacts[idx]
@@ -29,7 +27,6 @@ export default new Vuex.Store({
     },
     addItem(state, {item, id}) {
       state.contacts.find(contact => contact.id === id).items.push(item)
-      window.localStorage.setItem('contacts', JSON.stringify(state.contacts))
     },
     updateItem(state, {id, idx, newTitle, newValue}) {
       const item = state.contacts.find(contact => contact.id === id).items[idx]
@@ -38,11 +35,9 @@ export default new Vuex.Store({
       item.title = newTitle
       item.value = newValue
       item.newTitle = item.newValue = ''
-      window.localStorage.setItem('contacts', JSON.stringify(state.contacts))
     },
     deleteItem(state, {id, idx}) {
       state.contacts.find(contact => contact.id === id).items.splice(idx, 1)
-      window.localStorage.setItem('contacts', JSON.stringify(state.contacts))
     },
     resetOpen(state, {id, idx}) {
       const item = state.contacts.find(contact => contact.id === id).items[idx]
@@ -54,7 +49,6 @@ export default new Vuex.Store({
       item.value = item.oldValue
       item.oldTitle = item.oldValue = ''
       item.resetOpen = false
-      window.localStorage.setItem('contacts', JSON.stringify(state.contacts))
     }
   },
   actions: {
